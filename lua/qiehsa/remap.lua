@@ -1,3 +1,17 @@
+vim.keymap.set('n', '<F9>', function()
+  local file_path = vim.fn.expand('%:p') -- Gets the full path of the current file
+  vim.cmd('botright 10split | terminal go run ' .. file_path) -- Runs Go file in a split
+  vim.cmd('wincmd p') -- Switches back to the previous window
+end)
+
+vim.keymap.set('n', '<F10>', function()
+  local file_path = vim.fn.expand('%:p') -- Gets the full path of the current file
+  vim.cmd('botright 5split | terminal python ' .. file_path) -- Runs Python file in a split
+  vim.cmd('wincmd p') -- Switches back to the previous window
+end)
+
+
+vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -31,9 +45,10 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "jj", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", function()
     vim.lsp.buf.format()
 end)
@@ -46,3 +61,5 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+
+vim.keymap.set("n",  "<TAB>", "%", { noremap = true })
