@@ -1,15 +1,4 @@
-vim.cmd [[colorscheme habamax-ext]]
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = "*.py",
-    callback = function()
-        -- Assemble the command string
-        local cmd = "black " .. vim.fn.shellescape(vim.fn.expand('%')) .. " > /dev/null 2>&1"
-
-        -- Execute the command
-        vim.api.nvim_exec('silent !' .. cmd, false)
-    end
-})
+vim.cmd [[colorscheme darcula-solid]]
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
